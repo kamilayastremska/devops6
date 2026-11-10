@@ -1,0 +1,14 @@
+{
+  "name": "ci-demo",
+  "version": "1.0.0",
+  "description": "Navchalnyi proiekt dlia praktychnoi roboty №6 (CI, GitHub Actions)",
+  "main": "src/sum.js",
+  "scripts": {
+    "test": "jest",
+    "build": "mkdir -p dist && echo \"build ok\" > dist/result.txt"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
