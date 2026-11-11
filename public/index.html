@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Словник IT-термінів</title>
+  <style>
+    :root { --bg: #f5f6f8; --card: #ffffff; --text: #1f2430; --muted: #6b7280; --accent: #2f6fed; --border: #e2e5ea; }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #14161a; --card: #1d2026; --text: #e8eaee; --muted: #9aa1ad; --accent: #6a9bff; --border: #2d323b; }
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; background: var(--bg); color: var(--text); }
+    main { max-width: 640px; margin: 0 auto; padding: 32px 16px; }
+    h1 { font-size: 1.6rem; margin: 0 0 4px; }
+    .sub { color: var(--muted); margin: 0 0 20px; }
+    input { width: 100%; padding: 12px 14px; font-size: 1rem; border: 1px solid var(--border); border-radius: 8px; background: var(--card); color: var(--text); }
+    input:focus { outline: 2px solid var(--accent); border-color: transparent; }
+    .count { color: var(--muted); font-size: 0.85rem; margin: 12px 0 8px; }
+    ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+    li { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; cursor: pointer; }
+    li:hover { border-color: var(--accent); }
+    .head { display: flex; justify-content: space-between; gap: 12px; }
+    .word { font-weight: 600; }
+    .tr { color: var(--accent); }
+    .details { margin-top: 8px; font-size: 0.92rem; line-height: 1.45; }
+    .example { color: var(--muted); font-style: italic; margin-top: 4px; }
+    .empty { color: var(--muted); text-align: center; padding: 24px 0; cursor: default; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Словник IT-термінів</h1>
+    <p class="sub">English → Українська. Почніть вводити слово або переклад.</p>
+    <input id="q" type="search" placeholder="Наприклад: cache або кеш" autocomplete="off" autofocus>
+    <div id="count" class="count"></div>
+    <ul id="list"></ul>
+  </main>
+
+  <script>
+    const input = document.getElementById('q');
+    const list = document.getElementById('list');
+    const count = document.getElementById('count');
+    let timer;
+
+    function render(words) {
+      count.textContent = 'Знайдено: ' + words.length;
+      list.innerHTML = '';
+      if (!words.length) {
+        list.innerHTML = '<li class="empty">Нічого не знайдено</li>';
+        return;
+      }
+      for (const w of words) {
+        const li = document.createElement('li');
+        const head = document.createElement('div');
+        head.className = 'head';
+        const word = document.createElement('span');
+        word.className = 'word';
+        word.textContent = w.word;
+        const tr = document.createElement('span');
+        tr.className = 'tr';
+        tr.textContent = w.translation;
+        head.append(word, tr);
+
+        const details = document.createElement('div');
+        details.className = 'details';
+        details.hidden = true;
+        const def = document.createElement('div');
+        def.textContent = w.definition;
+        const ex = document.createElement('div');
+        ex.className = 'example';
+        ex.textContent = w.example;
+        details.append(def, ex);
+
+        li.append(head, details);
+        li.addEventListener('click', () => { details.hidden = !details.hidden; });
+        list.append(li);
+      }
+    }
+
+    async function load() {
+      try {
+        const res = await fetch('/api/words?q=' + encodeURIComponent(input.value));
+        render(await res.json());
+      } catch (e) {
+        count.textContent = 'Помилка завантаження';
+      }
+    }
+
+    input.addEventListener('input', () => { clearTimeout(timer); timer = setTimeout(load, 200); });
+    load();
+  </script>
+</body>
+</html>

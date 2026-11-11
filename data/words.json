@@ -1,0 +1,22 @@
+[
+  { "word": "artifact", "translation": "артефакт", "definition": "Файл або набір файлів, що створюються під час збірки й зберігаються для подальшого використання.", "example": "The pipeline uploads the build artifact." },
+  { "word": "branch", "translation": "гілка", "definition": "Окрема лінія розробки в системі контролю версій.", "example": "Create a new branch for the feature." },
+  { "word": "build", "translation": "збірка", "definition": "Процес перетворення вихідного коду на готовий до запуску продукт.", "example": "The build takes two minutes." },
+  { "word": "cache", "translation": "кеш", "definition": "Тимчасове сховище даних для пришвидшення повторних операцій.", "example": "Dependencies are restored from cache." },
+  { "word": "commit", "translation": "коміт", "definition": "Зафіксований набір змін у репозиторії з коротким описом.", "example": "Make a commit after every logical change." },
+  { "word": "container", "translation": "контейнер", "definition": "Ізольоване середовище, в якому запускається застосунок разом з усіма залежностями.", "example": "The app runs inside a container." },
+  { "word": "continuous integration", "translation": "безперервна інтеграція", "definition": "Практика частого злиття змін у спільну гілку з автоматичною збіркою та тестуванням.", "example": "Continuous integration catches bugs early." },
+  { "word": "dependency", "translation": "залежність", "definition": "Зовнішня бібліотека або пакет, потрібні проєкту для роботи.", "example": "Add a new dependency to package.json." },
+  { "word": "deploy", "translation": "розгортання", "definition": "Публікація застосунку в середовищі, де ним користуються.", "example": "We deploy to production every Friday." },
+  { "word": "environment", "translation": "середовище", "definition": "Набір умов і налаштувань, у яких запускається програма (розробка, тестування, продакшн).", "example": "Set an environment variable for the port." },
+  { "word": "job", "translation": "завдання", "definition": "Набір кроків пайплайна, що виконується на одному runner'і.", "example": "The job installs dependencies and runs tests." },
+  { "word": "lockfile", "translation": "lock-файл", "definition": "Файл, що фіксує точні версії встановлених залежностей і дає відтворювану збірку.", "example": "package-lock.json is a lockfile." },
+  { "word": "merge", "translation": "злиття", "definition": "Об'єднання змін з однієї гілки в іншу.", "example": "Merge the feature branch into main." },
+  { "word": "pipeline", "translation": "пайплайн", "definition": "Послідовність автоматизованих кроків: збірка, тестування, доставка.", "example": "The pipeline runs on every push." },
+  { "word": "pull request", "translation": "запит на злиття", "definition": "Пропозиція внести зміни в гілку з можливістю огляду коду іншими розробниками.", "example": "Open a pull request for review." },
+  { "word": "repository", "translation": "репозиторій", "definition": "Сховище коду разом з історією його змін.", "example": "Clone the repository to your computer." },
+  { "word": "runner", "translation": "виконавець", "definition": "Сервер або віртуальна машина, що виконує завдання пайплайна.", "example": "GitHub provides ubuntu-latest runners." },
+  { "word": "test", "translation": "тест", "definition": "Автоматична перевірка того, що код працює так, як очікується.", "example": "All tests passed." },
+  { "word": "trigger", "translation": "тригер", "definition": "Подія, що запускає пайплайн, наприклад push або pull request.", "example": "A push to main is the trigger." },
+  { "word": "workflow", "translation": "робочий процес", "definition": "Автоматизований процес у GitHub Actions, описаний у YAML-файлі.", "example": "The workflow is defined in ci.yml." }
+]
