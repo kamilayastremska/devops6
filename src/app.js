@@ -1,3 +1,7 @@
+// jgjg
+
+
+
 const path = require('path');
 const express = require('express');
 const { loadWords, search, lookup } = require('./dictionary');
